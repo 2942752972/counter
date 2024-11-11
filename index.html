@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"="width=device-width, initial-scale=1.0">
+  <title>Count and Background Change App</title>
+  <style>
+    /* 页面整体布局，使内容垂直水平居中 */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* 卡片样式 */
+  .card {
+      background-color: rgba(255, 255, 255, 0.8);
+      /* 半透明效果，可根据需要调整透明度值 */
+      border-radius: 10px;
+      /* 圆角 */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* 阴影效果 */
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      /* 使卡片内的元素也能水平居中 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 计数显示区域样式 */
+  .count-display {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* 自定义透明按钮样式 */
+  .custom-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: rgba(0, 123, 255, 0.5);
+      /* 透明按钮颜色，可根据需要调整透明度值，这里设置为0.5 */
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      /* 过渡效果，用于悬停时颜色变化更平滑 */
+    }
+
+  .custom-button:hover {
+      background-color: rgba(0, 86, 179, 0.5);
+      /* 悬停时的按钮颜色，保持透明度一致 */
+    }
+
+    /* 按钮容器样式，用于保持按钮左右排列 */
+  .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 卡片容器 -->
+  <div class="card">
+    <!-- 计数显示区域 -->
+    <p class="count-display">0</p>
+    <!-- 按钮容器，用于放置两个功能按钮并保持左右排列 */
+    <div class="button-container">
+      <!-- 计数增加按钮 -->
+      <div class="count-button custom-button">计数增加</div>
+      <!-- 背景变化按钮 -->
+      <div class="background-change-button custom-button">改变背景</div>
+    </div>
+  </div>
+
+  <script>
+    // 获取计数显示区域元素
+    const countDisplay = document.querySelector('.count-display');
+    // 获取计数增加按钮元素
+    const countButton = document.querySelector('.count-button');
+    // 获取背景变化按钮元素
+    const backgroundChangeButton = document.querySelector('.background-change-button');
+
+    // 初始计数为0
+    let count = 0;
+
+    // 为计数增加按钮绑定点击事件
+    countButton.addEventListener('click', function () {
+      count++;
+      countDisplay.textContent = count;
+    });
+
+    // 为背景变化按钮绑定点击事件
+    backgroundChangeButton.addEventListener('click', function () {
+      // 生成随机的渐变色
+      const randomColor1 = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+      const randomColor2 = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+      document.body.style.background = `linear-gradient(to right, ${randomColor1}, ${randomColor2})`;
+    });
+  </script>
+</body>
+
+</html>
